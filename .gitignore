@@ -3,5 +3,5 @@
 obj/
 
 # Files #
-.suo
-.user
+*.suo
+*.user
