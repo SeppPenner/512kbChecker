@@ -6,6 +6,12 @@ The executable was written and tested in .Net 4.6.2.
 
 [![Build status](https://ci.appveyor.com/api/projects/status/0p2unbxcfge97f84?svg=true)](https://ci.appveyor.com/project/SeppPenner/512kbchecker)
 
+## Screenshot from the executable german:
+![Screenshot from the executable german](https://github.com/SeppPenner/512kbChecker/blob/master/Screenshot_DE.PNG "Screenshot from the executable german")
+
+## Screenshot from the executable english:
+![Screenshot from the executable english](https://github.com/SeppPenner/512kbChecker/blob/master/Screenshot_EN.PNG "Screenshot from the executable english")
+
 Change history
 --------------
 
