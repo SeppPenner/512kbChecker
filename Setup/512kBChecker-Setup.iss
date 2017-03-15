@@ -44,7 +44,7 @@ Name: "quicklaunchicon"; Description: "{cm:CreateQuickLaunchIcon}"; GroupDescrip
 Source: "C:\Users\tim\Desktop\512kBChecker\512kBChecker\bin\Debug\512kBChecker.exe"; DestDir: "{app}"; Flags: ignoreversion
 Source: "C:\Users\tim\Desktop\512kBChecker\512kBChecker\bin\Debug\512kBChecker.exe"; DestDir: "{app}"; Flags: ignoreversion
 Source: "C:\Users\tim\Desktop\512kBChecker\512kBChecker\bin\Debug\Languages.dll"; DestDir: "{app}"; Flags: ignoreversion
-Source: "C:\Users\tim\Desktop\512kBChecker\512kBChecker\bin\Debug\languages\*"; DestDir: "{app}"; Flags: ignoreversion recursesubdirs createallsubdirs
+Source: "C:\Users\tim\Desktop\512kBChecker\512kBChecker\bin\Debug\languages\*"; DestDir: "{app}\languages\"; Flags: ignoreversion recursesubdirs createallsubdirs
 ; NOTE: Don't use "Flags: ignoreversion" on any shared system files
 
 [Icons]
