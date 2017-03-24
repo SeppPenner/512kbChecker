@@ -73,12 +73,10 @@ namespace _512kBChecker
 
         private void CheckIfFilesConcerned()
         {
-            if (string.IsNullOrWhiteSpace(richTextBoxFiles.Text) || !richTextBoxFiles.Lines.Any())
-            {
-                var title = _lm.GetCurrentLanguage().GetWord("NoFilesFoundTitle");
-                var text = _lm.GetCurrentLanguage().GetWord("NoFilesFoundText");
-                MessageBox.Show(text, title, MessageBoxButtons.OK, MessageBoxIcon.Information);
-            }
+            if (!string.IsNullOrWhiteSpace(richTextBoxFiles.Text) && richTextBoxFiles.Lines.Any()) return;
+            var title = _lm.GetCurrentLanguage().GetWord("NoFilesFoundTitle");
+            var text = _lm.GetCurrentLanguage().GetWord("NoFilesFoundText");
+            MessageBox.Show(text, title, MessageBoxButtons.OK, MessageBoxIcon.Information);
         }
 
         private void InitializeLanguageManager()
@@ -96,15 +94,7 @@ namespace _512kBChecker
 
         private void comboBoxLanguage_SelectedIndexChanged(object sender, EventArgs e)
         {
-            switch (comboBoxLanguage.SelectedItem.ToString())
-            {
-                case "Deutsch":
-                    _lm.SetCurrentLanguage("de-DE");
-                    break;
-                case "English (US)":
-                    _lm.SetCurrentLanguage("en-US");
-                    break;
-            }
+            _lm.SetCurrentLanguageFromName(comboBoxLanguage.SelectedItem.ToString());
         }
 
         private void OnLanguageChanged(object sender, EventArgs eventArgs)
