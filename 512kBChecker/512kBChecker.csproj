@@ -58,9 +58,11 @@
     <ApplicationIcon>Gifs.ico</ApplicationIcon>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="Languages, Version=1.0.0.1, Culture=neutral, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>bin\Debug\Languages.dll</HintPath>
+    <Reference Include="HelpLibraryManagerLauncher, Version=2016.4.9.0, Culture=neutral, PublicKeyToken=c8895f0c125eff20, processorArchitecture=MSIL">
+      <HintPath>..\packages\HaemmerElectronics.SeppPenner.Language.1.0.0.9\lib\Documentation\Sandcastle\HelpLibraryManagerLauncher.exe</HintPath>
+    </Reference>
+    <Reference Include="Languages, Version=1.0.0.9, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\HaemmerElectronics.SeppPenner.Language.1.0.0.9\lib\.Net 4.7\Languages.dll</HintPath>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
@@ -96,6 +98,7 @@
       <DesignTime>True</DesignTime>
     </Compile>
     <None Include="app.config" />
+    <None Include="packages.config" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
