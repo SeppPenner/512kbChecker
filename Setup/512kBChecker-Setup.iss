@@ -2,11 +2,11 @@
 ; SEE THE DOCUMENTATION FOR DETAILS ON CREATING INNO SETUP SCRIPT FILES!
 
 #define MyAppName "512kBChecker"
-#define MyAppVersion "1.0.0.5"
+#define MyAppVersion "1.0.0.6"
 #define MyAppPublisher "Hämmer Electronics"
 #define MyAppURL "www.softwareload24.de.tl"
 #define MyAppExeName "512kBChecker.exe"
-#define MyPath "F:\TODO\C# und VB\512kbChecker"
+#define MyPath "C:\Users\tim\Desktop\Updaten_Snyk\512kbChecker"
 
 [Setup]
 ; NOTE: The value of AppId uniquely identifies this application.
