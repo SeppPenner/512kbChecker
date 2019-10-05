@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<Language xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+    <Identifier>en-US</Identifier> <!--According to https://msdn.microsoft.com/de-de/library/ee825488(v=cs.20).aspx-->
+	<Name>English (US)</Name>
+	<Words>
+		<Word>
+			<Key>ChooseFolder</Key>
+			<Value>Choose folder</Value>
+		</Word>
+		<Word>
+			<Key>NoFilesFoundTitle</Key>
+			<Value>No files found</Value>
+		</Word>
+		<Word>
+			<Key>NoFilesFoundText</Key>
+			<Value>No files found that are too large for Sametime</Value>
+		</Word>
+		<Word>
+			<Key>SearchFolder</Key>
+			<Value>Search folder</Value>
+		</Word>
+	</Words>
+</Language>

@@ -2,11 +2,11 @@
 ; SEE THE DOCUMENTATION FOR DETAILS ON CREATING INNO SETUP SCRIPT FILES!
 
 #define MyAppName "512kBChecker"
-#define MyAppVersion "1.0.0.6"
+#define MyAppVersion "1.0.1.0"
 #define MyAppPublisher "Hämmer Electronics"
 #define MyAppURL "www.softwareload24.de.tl"
 #define MyAppExeName "512kBChecker.exe"
-#define MyPath "C:\Users\tim\Desktop\Updaten_Snyk\512kbChecker"
+#define MyPath "C:\Users\Tim\Documents\Git\C# und VB\512kbChecker"
 
 [Setup]
 ; NOTE: The value of AppId uniquely identifies this application.
@@ -42,10 +42,10 @@ Name: "desktopicon"; Description: "{cm:CreateDesktopIcon}"; GroupDescription: "{
 Name: "quicklaunchicon"; Description: "{cm:CreateQuickLaunchIcon}"; GroupDescription: "{cm:AdditionalIcons}"; Flags: unchecked; OnlyBelowVersion: 0,6.1
 
 [Files]
-Source: "{#MyPath}\512kBChecker\bin\Debug\512kBChecker.exe"; DestDir: "{app}"; Flags: ignoreversion
-Source: "{#MyPath}\512kBChecker\bin\Debug\512kBChecker.exe"; DestDir: "{app}"; Flags: ignoreversion
-Source: "{#MyPath}\512kBChecker\bin\Debug\Languages.dll"; DestDir: "{app}"; Flags: ignoreversion
-Source: "{#MyPath}\512kBChecker\bin\Debug\languages\*"; DestDir: "{app}\languages\"; Flags: ignoreversion recursesubdirs createallsubdirs
+Source: "{#MyPath}\512kBChecker\bin\Release\512kBChecker.exe"; DestDir: "{app}"; Flags: ignoreversion
+Source: "{#MyPath}\512kBChecker\bin\Release\512kBChecker.exe"; DestDir: "{app}"; Flags: ignoreversion
+Source: "{#MyPath}\512kBChecker\bin\Release\Languages.dll"; DestDir: "{app}"; Flags: ignoreversion
+Source: "{#MyPath}\512kBChecker\bin\Release\languages\*"; DestDir: "{app}\languages\"; Flags: ignoreversion recursesubdirs createallsubdirs
 ; NOTE: Don't use "Flags: ignoreversion" on any shared system files
 
 [Icons]
