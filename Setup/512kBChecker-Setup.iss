@@ -23,13 +23,13 @@ AppPublisher={#MyAppPublisher}
 AppPublisherURL={#MyAppURL}
 AppSupportURL={#MyAppURL}
 AppUpdatesURL={#MyAppURL}
-DefaultDirName={pf}\{#MyAppName}
+DefaultDirName={commonpf}\{#MyAppName}
 DefaultGroupName={#MyAppName}
 AllowNoIcons=yes
-LicenseFile={#MyPath}\512kBChecker\bin\Debug\License.txt
+LicenseFile={#MyPath}\512kBChecker\bin\Release\License.txt
 OutputDir={#MyPath}\Setup
 OutputBaseFilename=512kBChecker-Setup
-SetupIconFile={#MyPath}\512kBChecker\bin\Debug\Gifs.ico
+SetupIconFile={#MyPath}\512kBChecker\bin\Release\Gifs.ico
 Compression=lzma
 SolidCompression=yes
 
