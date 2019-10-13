@@ -61,8 +61,8 @@
     <ApplicationIcon>Gifs.ico</ApplicationIcon>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="Languages, Version=1.0.3.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\HaemmerElectronics.SeppPenner.Language.1.0.3\lib\net48\Languages.dll</HintPath>
+    <Reference Include="Languages, Version=1.0.4.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\HaemmerElectronics.SeppPenner.Language.1.0.4\lib\net48\Languages.dll</HintPath>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
