@@ -1,8 +1,20 @@
-﻿using System;
-using System.Windows.Forms;
+﻿// --------------------------------------------------------------------------------------------------------------------
+// <copyright file="Program.cs" company="Hämmer Electronics">
+//   Copyright (c) All rights reserved.
+// </copyright>
+// <summary>
+//   The main program for the application.
+// </summary>
+// --------------------------------------------------------------------------------------------------------------------
 
 namespace _512kBChecker
 {
+    using System;
+    using System.Windows.Forms;
+
+    /// <summary>
+    ///     The main program for the application.
+    /// </summary>
     internal static class Program
     {
         /// <summary>

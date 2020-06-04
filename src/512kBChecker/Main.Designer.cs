@@ -85,7 +85,7 @@
             this.buttonChooseFolder.Size = new System.Drawing.Size(120, 23);
             this.buttonChooseFolder.TabIndex = 0;
             this.buttonChooseFolder.UseVisualStyleBackColor = true;
-            this.buttonChooseFolder.Click += new System.EventHandler(this.buttonChooseFolder_Click);
+            this.buttonChooseFolder.Click += new System.EventHandler(this.ChooseFolderClick);
             // 
             // comboBoxLanguage
             // 
@@ -95,7 +95,7 @@
             this.comboBoxLanguage.Name = "comboBoxLanguage";
             this.comboBoxLanguage.Size = new System.Drawing.Size(120, 21);
             this.comboBoxLanguage.TabIndex = 1;
-            this.comboBoxLanguage.SelectedIndexChanged += new System.EventHandler(this.comboBoxLanguage_SelectedIndexChanged);
+            this.comboBoxLanguage.SelectedIndexChanged += new System.EventHandler(this.LanguageSelectedIndexChanged);
             // 
             // Main
             // 

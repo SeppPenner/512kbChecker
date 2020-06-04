@@ -1,57 +1,100 @@
-﻿using System;
-using System.Collections.Generic;
-using System.IO;
-using System.Linq;
-using System.Windows.Forms;
-using Languages.Implementation;
-using Languages.Interfaces;
-using _512kBChecker.Properties;
+﻿// --------------------------------------------------------------------------------------------------------------------
+// <copyright file="Main.cs" company="Hämmer Electronics">
+//   Copyright (c) All rights reserved.
+// </copyright>
+// <summary>
+//   The main form.
+// </summary>
+// --------------------------------------------------------------------------------------------------------------------
 
 namespace _512kBChecker
 {
+    using System;
+    using System.Collections.Generic;
+    using System.IO;
+    using System.Linq;
+    using System.Windows.Forms;
+
+    using Languages.Implementation;
+    using Languages.Interfaces;
+
+    /// <summary>
+    /// The main form.
+    /// </summary>
     public partial class Main : Form
     {
-        private readonly FolderBrowserDialog _fbd = new FolderBrowserDialog();
-        private readonly ILanguageManager _lm = new LanguageManager();
+        /// <summary>
+        /// The folder dialog.
+        /// </summary>
+        private readonly FolderBrowserDialog folderDialog = new FolderBrowserDialog();
 
+        /// <summary>
+        /// The language manager.
+        /// </summary>
+        private readonly ILanguageManager languageManager = new LanguageManager();
+
+        /// <summary>
+        /// Initializes a new instance of the <see cref="Main"/> class.
+        /// </summary>
         public Main()
         {
-            Init();
+            this.Init();
         }
 
+        /// <summary>
+        /// Initializes the program.
+        /// </summary>
         private void Init()
         {
-            InitializeComponent();
-            LoadTitleAndDescription();
-            InitializeLanguageManager();
-            LoadLanguagesToCombo();
+            this.InitializeComponent();
+            this.LoadTitleAndDescription();
+            this.InitializeLanguageManager();
+            this.LoadLanguagesToCombo();
         }
 
+        /// <summary>
+        /// Loads the title and description.
+        /// </summary>
         private void LoadTitleAndDescription()
         {
-            Text = Application.ProductName + string.Empty + Application.ProductVersion;
+            this.Text = $@"{Application.ProductName} {Application.ProductVersion}";
         }
 
-        private void buttonChooseFolder_Click(object sender, EventArgs e)
+        /// <summary>
+        /// Handles the choose folder click event.
+        /// </summary>
+        /// <param name="sender">The sender.</param>
+        /// <param name="e">The event args.</param>
+        private void ChooseFolderClick(object sender, EventArgs e)
         {
-            ClearTextBox();
-            var result = _fbd.ShowDialog();
+            this.ClearTextBox();
+            var result = this.folderDialog.ShowDialog();
+
             if (result == DialogResult.OK)
-                SearchFiles(_fbd.SelectedPath);
+            {
+                this.SearchFiles(this.folderDialog.SelectedPath);
+            }
         }
 
+        /// <summary>
+        /// Clears the text box.
+        /// </summary>
         private void ClearTextBox()
         {
-            richTextBoxFiles.Text = "";
+            this.richTextBoxFiles.Text = string.Empty;
         }
 
+        /// <summary>
+        /// Searches the files.
+        /// </summary>
+        /// <param name="directory">The directory.</param>
         private void SearchFiles(string directory)
         {
             try
             {
                 var gifs = Directory.EnumerateFiles(directory, "*.gif", SearchOption.AllDirectories).ToList();
-                CheckFiles(gifs);
-                CheckIfFilesConcerned();
+                this.CheckFiles(gifs);
+                this.CheckIfFilesConcerned();
             }
             catch (Exception ex)
             {
@@ -59,48 +102,86 @@ namespace _512kBChecker
             }
         }
 
+        /// <summary>
+        /// Checks the files.
+        /// </summary>
+        /// <param name="gifs">The files to check.</param>
         private void CheckFiles(IEnumerable<string> gifs)
         {
             foreach (var file in gifs)
-                CheckFile(file);
+            {
+                this.CheckFile(file);
+            }
         }
 
+        /// <summary>
+        /// Checks one file.
+        /// </summary>
+        /// <param name="file">The file.</param>
         private void CheckFile(string file)
         {
             if (new FileInfo(file).Length >= 512000)
-                richTextBoxFiles.AppendText(file + Environment.NewLine);
+            {
+                this.richTextBoxFiles.AppendText(file + Environment.NewLine);
+            }
         }
 
+        /// <summary>
+        /// Checks whether the file is concerned of the check or not.
+        /// </summary>
         private void CheckIfFilesConcerned()
         {
-            if (!string.IsNullOrWhiteSpace(richTextBoxFiles.Text) && richTextBoxFiles.Lines.Any()) return;
-            var title = _lm.GetCurrentLanguage().GetWord("NoFilesFoundTitle");
-            var text = _lm.GetCurrentLanguage().GetWord("NoFilesFoundText");
+            if (!string.IsNullOrWhiteSpace(this.richTextBoxFiles.Text) && this.richTextBoxFiles.Lines.Any())
+            {
+                return;
+            }
+
+            var title = this.languageManager.GetCurrentLanguage().GetWord("NoFilesFoundTitle");
+            var text = this.languageManager.GetCurrentLanguage().GetWord("NoFilesFoundText");
             MessageBox.Show(text, title, MessageBoxButtons.OK, MessageBoxIcon.Information);
         }
 
+        /// <summary>
+        /// Initializes the language manager.
+        /// </summary>
         private void InitializeLanguageManager()
         {
-            _lm.SetCurrentLanguage("de-DE");
-            _lm.OnLanguageChanged += OnLanguageChanged;
+            this.languageManager.SetCurrentLanguage("de-DE");
+            this.languageManager.OnLanguageChanged += this.OnLanguageChanged;
         }
 
+        /// <summary>
+        /// Loads the languages to the combo box.
+        /// </summary>
         private void LoadLanguagesToCombo()
         {
-            foreach (var lang in _lm.GetLanguages())
-                comboBoxLanguage.Items.Add(lang.Name);
-            comboBoxLanguage.SelectedIndex = 0;
+            foreach (var lang in this.languageManager.GetLanguages())
+            {
+                this.comboBoxLanguage.Items.Add(lang.Name);
+            }
+
+            this.comboBoxLanguage.SelectedIndex = 0;
         }
 
-        private void comboBoxLanguage_SelectedIndexChanged(object sender, EventArgs e)
+        /// <summary>
+        /// Handles the event when the selected index for the languages is changed.
+        /// </summary>
+        /// <param name="sender">The sender.</param>
+        /// <param name="eventArgs">The event args.</param>
+        private void LanguageSelectedIndexChanged(object sender, EventArgs eventArgs)
         {
-            _lm.SetCurrentLanguageFromName(comboBoxLanguage.SelectedItem.ToString());
+            this.languageManager.SetCurrentLanguageFromName(this.comboBoxLanguage.SelectedItem.ToString());
         }
 
+        /// <summary>
+        /// Handles the language changed event.
+        /// </summary>
+        /// <param name="sender">The sender.</param>
+        /// <param name="eventArgs">The event args.</param>
         private void OnLanguageChanged(object sender, EventArgs eventArgs)
         {
-            buttonChooseFolder.Text = _lm.GetCurrentLanguage().GetWord("ChooseFolder");
-            _fbd.Description = _lm.GetCurrentLanguage().GetWord("SearchFolder");
+            this.buttonChooseFolder.Text = this.languageManager.GetCurrentLanguage().GetWord("ChooseFolder");
+            this.folderDialog.Description = this.languageManager.GetCurrentLanguage().GetWord("SearchFolder");
         }
     }
 }
