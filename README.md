@@ -2,7 +2,7 @@
 ====================================
 
 512kbChecker is an executable to check gif files if they are too large for IBM Lotus Notes Sametime.
-The executable was written and tested in .NetCore 3.1.
+The executable was written and tested in .Net 5.0.
 
 [![Build status](https://ci.appveyor.com/api/projects/status/0p2unbxcfge97f84?svg=true)](https://ci.appveyor.com/project/SeppPenner/512kbchecker)
 [![GitHub issues](https://img.shields.io/github/issues/SeppPenner/512kbChecker.svg)](https://github.com/SeppPenner/512kbChecker/issues)

@@ -6,7 +6,6 @@
 #define MyAppPublisher "Hämmer Electronics"
 #define MyAppURL "www.softwareload24.de.tl"
 #define MyAppExeName "512kBChecker.exe"
-#define MyPath "C:\Users\Tim\Documents\Git\C# und VB\512kbChecker"
 
 [Setup]
 ; NOTE: The value of AppId uniquely identifies this application.
@@ -26,10 +25,10 @@ AppUpdatesURL={#MyAppURL}
 DefaultDirName={commonpf}\{#MyAppName}
 DefaultGroupName={#MyAppName}
 AllowNoIcons=yes
-LicenseFile={#MyPath}\512kBChecker\bin\Release\License.txt
-OutputDir={#MyPath}\Setup
+LicenseFile=..\src\512kBChecker\bin\Release\License.txt
+OutputDir=..\Setup
 OutputBaseFilename=512kBChecker-Setup
-SetupIconFile={#MyPath}\512kBChecker\bin\Release\Gifs.ico
+SetupIconFile=..\src\512kBChecker\bin\Release\Gifs.ico
 Compression=lzma
 SolidCompression=yes
 
@@ -42,10 +41,10 @@ Name: "desktopicon"; Description: "{cm:CreateDesktopIcon}"; GroupDescription: "{
 Name: "quicklaunchicon"; Description: "{cm:CreateQuickLaunchIcon}"; GroupDescription: "{cm:AdditionalIcons}"; Flags: unchecked; OnlyBelowVersion: 0,6.1
 
 [Files]
-Source: "{#MyPath}\512kBChecker\bin\Release\512kBChecker.exe"; DestDir: "{app}"; Flags: ignoreversion
-Source: "{#MyPath}\512kBChecker\bin\Release\512kBChecker.exe"; DestDir: "{app}"; Flags: ignoreversion
-Source: "{#MyPath}\512kBChecker\bin\Release\Languages.dll"; DestDir: "{app}"; Flags: ignoreversion
-Source: "{#MyPath}\512kBChecker\bin\Release\languages\*"; DestDir: "{app}\languages\"; Flags: ignoreversion recursesubdirs createallsubdirs
+Source: "..\src\512kBChecker\bin\Release\512kBChecker.exe"; DestDir: "{app}"; Flags: ignoreversion
+Source: "..\src\512kBChecker\bin\Release\512kBChecker.exe"; DestDir: "{app}"; Flags: ignoreversion
+Source: "..\src\512kBChecker\bin\Release\Languages.dll"; DestDir: "{app}"; Flags: ignoreversion
+Source: "..\src\512kBChecker\bin\Release\languages\*"; DestDir: "{app}\languages\"; Flags: ignoreversion recursesubdirs createallsubdirs
 ; NOTE: Don't use "Flags: ignoreversion" on any shared system files
 
 [Icons]

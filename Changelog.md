@@ -1,5 +1,6 @@
 # Change history
 
+* **Version 1.0.4.0 (2020-11-11)** : Updated nuget packages, moved to Net 5.0.
 * **Version 1.0.3.0 (2020-06-04)** : Updated nuget packages, updated license year information, moved to NetCore 3.1.
 * **Version 1.0.2.0 (2019-10-13)** : Updated nuget packages, added AssemblyFile again.
 * **Version 1.0.1.0 (2019-10-05)** : Updated nuget packages, added GitVersionTask.
