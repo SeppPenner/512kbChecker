@@ -25,10 +25,10 @@ AppUpdatesURL={#MyAppURL}
 DefaultDirName={commonpf}\{#MyAppName}
 DefaultGroupName={#MyAppName}
 AllowNoIcons=yes
-LicenseFile=..\src\512kBChecker\bin\Release\License.txt
+LicenseFile=..\src\512kBChecker\License.txt
 OutputDir=..\Setup
 OutputBaseFilename=512kBChecker-Setup
-SetupIconFile=..\src\512kBChecker\bin\Release\Gifs.ico
+SetupIconFile=..\src\512kBChecker\Gifs.ico
 Compression=lzma
 SolidCompression=yes
 
@@ -41,10 +41,11 @@ Name: "desktopicon"; Description: "{cm:CreateDesktopIcon}"; GroupDescription: "{
 Name: "quicklaunchicon"; Description: "{cm:CreateQuickLaunchIcon}"; GroupDescription: "{cm:AdditionalIcons}"; Flags: unchecked; OnlyBelowVersion: 0,6.1
 
 [Files]
-Source: "..\src\512kBChecker\bin\Release\512kBChecker.exe"; DestDir: "{app}"; Flags: ignoreversion
-Source: "..\src\512kBChecker\bin\Release\512kBChecker.exe"; DestDir: "{app}"; Flags: ignoreversion
-Source: "..\src\512kBChecker\bin\Release\Languages.dll"; DestDir: "{app}"; Flags: ignoreversion
-Source: "..\src\512kBChecker\bin\Release\languages\*"; DestDir: "{app}\languages\"; Flags: ignoreversion recursesubdirs createallsubdirs
+Source: "..\src\512kBChecker\bin\Release\net5.0-windows\512kBChecker.exe"; DestDir: "{app}"; Flags: ignoreversion
+Source: "..\src\512kBChecker\bin\Release\net5.0-windows\512kBChecker.dll"; DestDir: "{app}"; Flags: ignoreversion
+Source: "..\src\512kBChecker\bin\Release\net5.0-windows\Languages.dll"; DestDir: "{app}"; Flags: ignoreversion
+Source: "..\src\512kBChecker\bin\Release\net5.0-windows\License.txt"; DestDir: "{app}"; Flags: ignoreversion
+Source: "..\src\512kBChecker\bin\Release\net5.0-windows\languages\*"; DestDir: "{app}\languages\"; Flags: ignoreversion recursesubdirs createallsubdirs
 ; NOTE: Don't use "Flags: ignoreversion" on any shared system files
 
 [Icons]
