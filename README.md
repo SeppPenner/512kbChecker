@@ -11,11 +11,11 @@ The executable was written and tested in .Net 5.0.
 [![License: MIT](https://img.shields.io/badge/License-MIT-blue.svg)](https://raw.githubusercontent.com/SeppPenner/512kbChecker/master/License.txt)
 [![Known Vulnerabilities](https://snyk.io/test/github/SeppPenner/512kbChecker/badge.svg)](https://snyk.io/test/github/SeppPenner/512kbChecker)
 
-## Screenshot from the executable german
-![Screenshot from the executable german](https://github.com/SeppPenner/512kbChecker/blob/master/Screenshot_DE.PNG "Screenshot from the executable german")
+## Screenshot from the executable German
+![Screenshot from the executable German](https://github.com/SeppPenner/512kbChecker/blob/master/Screenshot_DE.PNG "Screenshot from the executable German")
 
-## Screenshot from the executable english
-![Screenshot from the executable english](https://github.com/SeppPenner/512kbChecker/blob/master/Screenshot_EN.PNG "Screenshot from the executable english")
+## Screenshot from the executable English
+![Screenshot from the executable English](https://github.com/SeppPenner/512kbChecker/blob/master/Screenshot_EN.PNG "Screenshot from the executable English")
 
 Change history
 --------------
