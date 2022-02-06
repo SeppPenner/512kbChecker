@@ -26,7 +26,7 @@ namespace _512kBChecker
         /// <summary>
         /// The folder dialog.
         /// </summary>
-        private readonly FolderBrowserDialog folderDialog = new FolderBrowserDialog();
+        private readonly FolderBrowserDialog folderDialog = new();
 
         /// <summary>
         /// The language manager.
