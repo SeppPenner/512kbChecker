@@ -161,7 +161,14 @@ public partial class Main : Form
     /// <param name="eventArgs">The event args.</param>
     private void LanguageSelectedIndexChanged(object sender, EventArgs eventArgs)
     {
-        this.languageManager.SetCurrentLanguageFromName(this.comboBoxLanguage.SelectedItem.ToString());
+        var selectedString = this.comboBoxLanguage.SelectedItem.ToString();
+
+        if (string.IsNullOrWhiteSpace(selectedString))
+        {
+            return;
+        }
+
+        this.languageManager.SetCurrentLanguageFromName(selectedString);
     }
 
     /// <summary>
