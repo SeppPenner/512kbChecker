@@ -1,4 +1,4 @@
-﻿// --------------------------------------------------------------------------------------------------------------------
+// --------------------------------------------------------------------------------------------------------------------
 // <copyright file="Program.cs" company="Hämmer Electronics">
 //   Copyright (c) All rights reserved.
 // </copyright>
@@ -7,25 +7,21 @@
 // </summary>
 // --------------------------------------------------------------------------------------------------------------------
 
-namespace _512kBChecker
-{
-    using System;
-    using System.Windows.Forms;
+namespace _512kBChecker;
 
+/// <summary>
+///     The main program for the application.
+/// </summary>
+internal static class Program
+{
     /// <summary>
-    ///     The main program for the application.
+    ///     The main entry point for the application.
     /// </summary>
-    internal static class Program
+    [STAThread]
+    private static void Main()
     {
-        /// <summary>
-        ///     The main entry point for the application.
-        /// </summary>
-        [STAThread]
-        private static void Main()
-        {
-            Application.EnableVisualStyles();
-            Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new Main());
-        }
+        Application.EnableVisualStyles();
+        Application.SetCompatibleTextRenderingDefault(false);
+        Application.Run(new Main());
     }
 }
