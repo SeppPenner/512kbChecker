@@ -138,7 +138,7 @@ public partial class Main : Form
     private void InitializeLanguageManager()
     {
         this.languageManager.SetCurrentLanguage("de-DE");
-        this.languageManager.OnLanguageChanged += this.OnLanguageChanged;
+        this.languageManager.OnLanguageChanged += this.OnLanguageChanged!;
     }
 
     /// <summary>
