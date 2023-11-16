@@ -161,7 +161,7 @@ public partial class Main : Form
     /// <param name="eventArgs">The event args.</param>
     private void LanguageSelectedIndexChanged(object sender, EventArgs eventArgs)
     {
-        var selectedString = this.comboBoxLanguage.SelectedItem.ToString();
+        var selectedString = this.comboBoxLanguage.SelectedItem?.ToString();
 
         if (string.IsNullOrWhiteSpace(selectedString))
         {
@@ -178,7 +178,8 @@ public partial class Main : Form
     /// <param name="eventArgs">The event args.</param>
     private void OnLanguageChanged(object sender, EventArgs eventArgs)
     {
-        this.buttonChooseFolder.Text = this.languageManager.GetCurrentLanguage().GetWord("ChooseFolder");
-        this.folderDialog.Description = this.languageManager.GetCurrentLanguage().GetWord("SearchFolder");
+        var currentLanguage = this.languageManager.GetCurrentLanguage();
+        this.buttonChooseFolder.Text = currentLanguage?.GetWord("ChooseFolder") ?? string.Empty;
+        this.folderDialog.Description = currentLanguage?.GetWord("SearchFolder") ?? string.Empty;
     }
 }
