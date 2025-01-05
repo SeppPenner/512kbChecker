@@ -1,5 +1,6 @@
 # Change history
 
+* **Version 1.0.9.0 (2025-01-05)** : Updated Nuget packages, added audit mode, moved to Net9.0.
 * **Version 1.0.8.0 (2023-12-27)** : Updated nuget packages, moved to Net 8.0.
 * **Version 1.0.7.0 (2022-11-21)** : Updated nuget packages, moved to Net 7.0.
 * **Version 1.0.6.0 (2022-02-08)** : Added nullable checks, added editorconfig, added file scoped namespaces, added global usings.
