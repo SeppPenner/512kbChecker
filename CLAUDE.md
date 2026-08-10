@@ -48,7 +48,7 @@ Its runtime contract is convention based and this project depends on it:
 dotnet build src/512kBChecker.sln
 ```
 
-- Single target framework `net9.0-windows`, `WinExe`, `UseWindowsForms`, `RuntimeIdentifiers`
+- Single target framework `net10.0-windows`, `WinExe`, `UseWindowsForms`, `RuntimeIdentifiers`
   `win-x64`. This is a Windows only application, unlike the library it references.
 - All build properties live directly in `src/512kBChecker/512kBChecker.csproj`. There is no
   `Directory.Build.props` in this repository.
