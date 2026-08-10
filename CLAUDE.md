@@ -106,18 +106,16 @@ Do not silently "clean up" these, they are existing behaviour:
 - `SetCurrentLanguage("de-DE")` in `InitializeLanguageManager` runs before the event is subscribed,
   so it changes no caption. The language actually shown is whichever file ends up first in the
   combo box, which is `de-DE.xml` only because of the alphabetical file order.
-- `MessageBox.Show(ex.StackTrace, ex.Message, ...)` in `SearchFiles` passes the stack trace as the
-  message and the exception message as the window caption. That looks swapped and it is, but it is
-  the shipped behaviour.
 - The window title is `Application.ProductName` plus `Application.ProductVersion`, and
   `ProductVersion` is the GitVersion informational version. On an untagged commit the title reads
   something like `512kBChecker 1.0.10-1+Branch.master.Sha.e3af4c2...`. Only a tagged build shows a
   clean version.
 - `.gitignore` excludes `*.exe` and `[Bb]in`, yet `Setup/512kBChecker-Setup.exe` is tracked. It was
   added with `git add -f` and has to be updated the same way for every release.
-- `Setup/512kBChecker-Setup.iss` is stored in Windows-1252, not UTF-8 (`Hämmer` is a single `0xE4`
-  byte). Edit only the lines you have to and write the file back in its original encoding, saving
-  it as UTF-8 without BOM makes the installer display `HÃ¤mmer`.
+- `Setup/512kBChecker-Setup.iss` is UTF-8 **with** BOM and has to stay that way. Inno Setup 6 reads
+  a script as UTF-8 only when the BOM is there, without it the file is interpreted in the system
+  ANSI codepage and `Hämmer Electronics` becomes `HÃ¤mmer Electronics` in the installer. Editors
+  that save "UTF-8 without BOM" by default silently break this.
 - `src/512kBChecker.sln` still declares only `Debug|x86` and `Release|x86` solution
   configurations mapped to `Any CPU`. It builds fine, do not "fix" it as a side task.
 

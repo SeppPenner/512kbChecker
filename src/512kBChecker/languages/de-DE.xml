@@ -19,5 +19,9 @@
 			<Key>SearchFolder</Key>
 			<Value>Ordner suchen</Value>
 		</Word>
+		<Word>
+			<Key>ErrorTitle</Key>
+			<Value>Fehler</Value>
+		</Word>
 	</Words>
 </Language>
