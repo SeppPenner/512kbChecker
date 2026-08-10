@@ -63,8 +63,10 @@ dotnet build src/512kBChecker.sln
   for public packages, restore fails with `NU1301`. Then build with an explicit source:
   `dotnet build src/512kBChecker.sln --source https://api.nuget.org/v3/index.json`.
 - `Setup/build-setup-files.bat` deletes all `bin` and `obj` folders below `src`, then runs
-  `dotnet publish -c Release -o bin/publish` and removes the `*.pdb` files from the publish output.
-  It does **not** run the Inno Setup compiler, that is a separate manual step.
+  `dotnet publish -c Release -r win-x64 --self-contained true -o bin/publish` and removes the
+  `*.pdb` files from the publish output. The installer ships the whole runtime, so the target
+  machine needs no .NET installation, at the price of roughly 120 MB of publish output. The batch
+  file does **not** run the Inno Setup compiler, that is a separate manual step.
 - **There are no tests in this repository.** Never claim a test run happened. Verification means a
   clean build, and where behaviour changed, starting the built executable and pointing it at a
   folder with gif files.
@@ -121,15 +123,22 @@ Do not silently "clean up" these, they are existing behaviour:
 
 ## Releasing
 
+The tag comes **before** the installer build, never after. GitVersion derives the assembly version
+from the tag, so an installer compiled on an untagged commit contains an executable that reports
+something like `1.0.10-4+Branch.master.Sha...` in its window title instead of a clean `1.0.10`.
+
 1. Make the change.
 2. Add an entry at the top of `Changelog.md` in the existing format:
    `* **Version 1.0.10.0 (2026-08-10)** : Short description.`
 3. Bump `MyAppVersion` in `Setup/512kBChecker-Setup.iss` to the same version, four parts.
-4. Run `Setup/build-setup-files.bat` to produce `src/512kBChecker/bin/publish`.
-5. Compile `Setup/512kBChecker-Setup.iss` with Inno Setup, it writes
-   `Setup/512kBChecker-Setup.exe`, and commit that file with `git add -f`.
-6. Tag the commit with the plain version number, no `v` prefix (`1.0.9`, `1.0.8`, ...). GitVersion
-   derives assembly and file version from that tag.
+4. Commit that, then tag the commit with the plain version number, no `v` prefix (`1.0.9`,
+   `1.0.8`, ...).
+5. Run `Setup/build-setup-files.bat`, it publishes the tagged commit to
+   `src/512kBChecker/bin/publish`.
+6. Compile `Setup/512kBChecker-Setup.iss` with Inno Setup, it writes
+   `Setup/512kBChecker-Setup.exe`.
+7. Commit that file with `git add -f`, then push the commits and the tag. This last commit sits
+   after the tag, the same way `Updated setup.` sits after tag `1.0.9`.
 
 Never run the publish or the installer build unless explicitly asked to release.
 
