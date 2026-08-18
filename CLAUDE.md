@@ -112,8 +112,10 @@ Do not silently "clean up" these, they are existing behaviour:
   `ProductVersion` is the GitVersion informational version. On an untagged commit the title reads
   something like `512kBChecker 1.0.10-1+Branch.master.Sha.e3af4c2...`. Only a tagged build shows a
   clean version.
-- `.gitignore` excludes `*.exe` and `[Bb]in`, yet `Setup/512kBChecker-Setup.exe` is tracked. It was
-  added with `git add -f` and has to be updated the same way for every release.
+- `Setup/512kBChecker-Setup.exe` is **not** tracked, the `*.exe` rule in `.gitignore` catches it.
+  It used to be committed with `git add -f` until version 1.0.10, which is why the history still
+  carries 11 installer blobs and a clone pulls roughly 45 MB of them. Do not add it back, the
+  installer belongs to the GitHub release of its tag, see "Releasing".
 - `Setup/512kBChecker-Setup.iss` is UTF-8 **with** BOM and has to stay that way. Inno Setup 6 reads
   a script as UTF-8 only when the BOM is there, without it the file is interpreted in the system
   ANSI codepage and `Hämmer Electronics` becomes `HÃ¤mmer Electronics` in the installer. Editors
@@ -131,14 +133,29 @@ something like `1.0.10-4+Branch.master.Sha...` in its window title instead of a 
 2. Add an entry at the top of `Changelog.md` in the existing format:
    `* **Version 1.0.10.0 (2026-08-10)** : Short description.`
 3. Bump `MyAppVersion` in `Setup/512kBChecker-Setup.iss` to the same version, four parts.
-4. Commit that, then tag the commit with the plain version number, no `v` prefix (`1.0.9`,
-   `1.0.8`, ...).
-5. Run `Setup/build-setup-files.bat`, it publishes the tagged commit to
-   `src/512kBChecker/bin/publish`.
-6. Compile `Setup/512kBChecker-Setup.iss` with Inno Setup, it writes
-   `Setup/512kBChecker-Setup.exe`.
-7. Commit that file with `git add -f`, then push the commits and the tag. This last commit sits
-   after the tag, the same way `Updated setup.` sits after tag `1.0.9`.
+4. Commit that, then tag the commit with the plain version number, no `v` prefix (`1.0.10`,
+   `1.0.9`, ...). The existing tags are lightweight tags, create new ones the same way.
+5. Push the commit and the tag.
+6. Only now build: `Setup/build-setup-files.bat` publishes the tagged commit to
+   `src/512kBChecker/bin/publish`, then compile `Setup/512kBChecker-Setup.iss` with Inno Setup,
+   which writes `Setup/512kBChecker-Setup.exe`.
+7. Create the GitHub release for the tag and attach that file to it. The installer is not
+   committed. With the GitHub CLI that is `gh release create 1.0.11 --title 1.0.11 --notes "..."`
+   followed by `gh release upload 1.0.11 Setup/512kBChecker-Setup.exe`. Without `gh` the REST API
+   does the same: `POST /repos/SeppPenner/512kbChecker/releases`, then
+   `POST https://uploads.github.com/repos/SeppPenner/512kbChecker/releases/<id>/assets?name=512kBChecker-Setup.exe`
+   with the file as `application/octet-stream`. The token for both comes out of the Windows
+   credential manager, the same one `git push` uses, and is never written into a file:
+
+```powershell
+$credential = "protocol=https`nhost=github.com`n`n" | git credential fill
+$token = ($credential | Select-String '^password=').ToString().Split('=', 2)[1]
+```
+
+The version in `Changelog.md` and in the `.iss` has four parts (`1.0.11.0`), the tag has three
+(`1.0.11`). Every tag from `1.0.1` on has a release, each with exactly one asset named
+`512kBChecker-Setup.exe`. The installers of `1.0.1` to `1.0.10` were recovered from the history,
+`1.0.2` is the one release without an asset because no installer for it was ever committed.
 
 Never run the publish or the installer build unless explicitly asked to release.
 

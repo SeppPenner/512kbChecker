@@ -13,6 +13,10 @@
 [![Patreon](https://img.shields.io/badge/Patreon-F96854?logo=patreon&logoColor=white)](https://patreon.com/SeppPennerOpenSourceDevelopment)
 [![PayPal](https://img.shields.io/badge/PayPal-00457C?logo=paypal&logoColor=white)](https://paypal.me/th070795)
 
+## Download
+The installer is attached to each [release](https://github.com/SeppPenner/512kbChecker/releases).
+It is self contained since version 1.0.10.0, so no .NET runtime needs to be installed.
+
 ## Screenshot from the executable German
 ![Screenshot from the executable German](https://github.com/SeppPenner/512kbChecker/blob/master/Screenshot_DE.PNG "Screenshot from the executable German")
 
